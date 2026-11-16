@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tone Deaf Tennis: the paddle game you play by humming</title>
+    <meta name="description" content="The classic two-paddle game, except your paddle follows your voice. Hum high to go up, low to go down, belt it to smash. Runs entirely in your browser." />
+    <meta property="og:title" content="Tone Deaf Tennis" />
+    <meta property="og:description" content="The classic paddle game, played entirely by humming." />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <main id="app">
+      <header class="topbar">
+        <div class="brand">Tone Deaf Tennis</div>
+        <div class="score" aria-live="polite">
+          <span class="who">You</span><span id="score-you">0</span><span class="dash">–</span><span id="score-pete">0</span><span class="who">Pete</span>
+        </div>
+        <div class="right">
+          <span id="mode-pill" class="pill">menu</span>
+          <button id="mute" class="icon" title="Mute sound effects">♪</button>
+        </div>
+      </header>
+
+      <section class="stage">
+        <canvas id="court" width="960" height="540" aria-label="Court"></canvas>
+
+        <div id="note-readout" class="note-readout hidden">
+          <div id="note-name">—</div>
+          <div id="note-detail">hum something</div>
+          <div class="meter"><div id="meter-fill"></div></div>
+        </div>
+
+        <div id="quip" class="quip hidden"></div>
+
+        <div id="screen-title" class="screen">
+          <div class="card">
+            <p class="kicker">A remix of the 1972 paddle game</p>
+            <h1>Tone Deaf<br />Tennis</h1>
+            <p class="lede">Same two paddles, same ball, same net. One change: <strong>you play it by humming.</strong> High note, paddle goes up. Low note, paddle goes down. Belt it and your next return is a smash.</p>
+            <div class="buttons">
+              <button id="btn-mic" class="primary">Use my voice</button>
+              <button id="btn-robot">Watch the robot hum</button>
+              <button id="btn-coward" class="ghost">Coward mode (mouse)</button>
+            </div>
+            <p class="small">Your opponent is Perfect Pitch Pete. Audio never leaves your browser: no uploads, no sign-up, no tracking. Headphones stop the sound effects confusing the mic.</p>
+          </div>
+        </div>
+
+        <div id="screen-calibrate" class="screen hidden">
+          <div class="card">
+            <p class="kicker" id="cal-step">Step 1 of 2</p>
+            <h2 id="cal-title">Hum your lowest comfortable note</h2>
+            <p id="cal-help" class="lede">Hold it steady for a couple of seconds. This becomes the bottom of the court.</p>
+            <div class="cal-live"><span id="cal-note">—</span></div>
+            <div class="progress"><div id="cal-progress"></div></div>
+            <div class="buttons">
+              <button id="btn-cal-skip" class="ghost">Skip, use a default range</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="screen-ready" class="screen hidden">
+          <div class="card">
+            <p class="kicker">Calibrated</p>
+            <h2 id="ready-range">C3 to A4</h2>
+            <p id="ready-quip" class="lede"></p>
+            <ul class="howto">
+              <li><b>Higher note</b> moves your paddle up</li>
+              <li><b>Lower note</b> moves it down</li>
+              <li><b>Go quiet</b> and it slowly sinks</li>
+              <li><b>Belt it</b> as the ball arrives for a smash</li>
+            </ul>
+            <div class="buttons">
+              <button id="btn-play" class="primary">Serve</button>
+              <button id="btn-recal" class="ghost">Recalibrate</button>
+            </div>
+            <p class="small">First to 7. Your returns play the note you were humming, so every rally is a little song.</p>
+          </div>
+        </div>
+
+        <div id="screen-over" class="screen hidden">
+          <div class="card wide">
+            <h2 id="over-title">Game over</h2>
+            <canvas id="cert" width="1200" height="630" aria-label="Your certificate"></canvas>
+            <div class="buttons">
+              <button id="btn-melody" class="primary">Play my rally back</button>
+              <button id="btn-download">Download certificate</button>
+              <button id="btn-rematch">Rematch</button>
+              <button id="btn-menu" class="ghost">Menu</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span>Remix of the classic paddle game for <a href="https://hackyard.tech/yards/yard-7" target="_blank" rel="noopener">Hackyard Yard #7</a>. All code, art and sound made from scratch.</span>
+        <a href="https://github.com/ThomasConway01/tone-deaf-tennis" target="_blank" rel="noopener">Source</a>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

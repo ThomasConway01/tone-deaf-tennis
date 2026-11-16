@@ -1,0 +1,7 @@
+{
+  // Static site on Cloudflare Workers (assets only, no server code).
+  "name": "tone-deaf-tennis",
+  "compatibility_date": "2026-11-01",
+  "assets": { "directory": "./dist" },
+  "routes": [{ "pattern": "tone-deaf-tennis.thethomas.tech", "custom_domain": true }]
+}
